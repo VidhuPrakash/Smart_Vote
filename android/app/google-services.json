@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "267488540093",
+    "project_id": "smart-vote-20ab5",
+    "storage_bucket": "smart-vote-20ab5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267488540093:android:eb87bb02e4fbe649384ed4",
+        "android_client_info": {
+          "package_name": "com.example.smart_vote_"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-8jIyhlEbjrfeuRWYyPUBcanZ_L39YEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
