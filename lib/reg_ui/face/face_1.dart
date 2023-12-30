@@ -8,9 +8,13 @@ import 'package:google_mlkit_commons/google_mlkit_commons.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:smart_vote_/reg_ui/face/face_2.dart';
+import 'package:smart_vote_/service/database_service.dart';
 
 class faceVerification extends StatefulWidget {
-  const faceVerification({Key? key}) : super(key: key);
+  final String voterId;
+
+  // Update the constructor to accept the voterId
+  const faceVerification({Key? key, required this.voterId}) : super(key: key);
 
   @override
   State<faceVerification> createState() => _faceVerificationState();
@@ -18,6 +22,7 @@ class faceVerification extends StatefulWidget {
 
 class _faceVerificationState extends State<faceVerification> {
   final ImagePicker picker = ImagePicker();
+  bool isDetectingFace = false;
   File? _image;
   String result = "";
   String face_error = "Keep a hand distance with face and camera";
@@ -48,6 +53,9 @@ class _faceVerificationState extends State<faceVerification> {
   }
 
   doFaceRegister() async {
+    setState(() {
+      isDetectingFace = true;
+    });
     result = "";
 
     InputImage inputImage = InputImage.fromFile(_image!);
@@ -79,21 +87,38 @@ class _faceVerificationState extends State<faceVerification> {
         final FaceLandmark? leftEye = face.landmarks[FaceLandmarkType.leftEye];
         final FaceLandmark? rightEye =
             face.landmarks[FaceLandmarkType.rightEye];
+
         if (leftEar != null) {
           final Point<int> leftEarPos = leftEar.position;
           print("Left Ear Points:" + leftEarPos.toString());
+          await DatabaseService().updateVoterField(
+              widget.voterId, 'leftEar_1_X', leftEarPos.x.toString());
+          await DatabaseService().updateVoterField(
+              widget.voterId, 'leftEar_1_Y', leftEarPos.y.toString());
         }
         if (rightEar != null) {
           final Point<int> rightEarPos = rightEar.position;
           print("Right Ear Points:" + rightEarPos.toString());
+          await DatabaseService().updateVoterField(
+              widget.voterId, 'rightEar_1_X', rightEarPos.x.toString());
+          await DatabaseService().updateVoterField(
+              widget.voterId, 'rightEar_1_Y', rightEarPos.y.toString());
         }
         if (leftEye != null) {
           final Point<int> leftEyePos = leftEye.position;
           print("Left Eye Points:" + leftEyePos.toString());
+          await DatabaseService().updateVoterField(
+              widget.voterId, 'leftEye_1_X', leftEyePos.x.toString());
+          await DatabaseService().updateVoterField(
+              widget.voterId, 'leftEye_1_Y', leftEyePos.y.toString());
         }
         if (rightEye != null) {
           final Point<int> rightEyePos = rightEye.position;
           print("Right Eye Points:" + rightEyePos.toString());
+          await DatabaseService().updateVoterField(
+              widget.voterId, 'rightEye_1_X', rightEyePos.x.toString());
+          await DatabaseService().updateVoterField(
+              widget.voterId, 'rightEye_1_Y', rightEyePos.y.toString());
         }
         if (face.trackingId != null) {
           final int? id = face.trackingId;
@@ -102,7 +127,9 @@ class _faceVerificationState extends State<faceVerification> {
         }
       }
     }
-
+    setState(() {
+      isDetectingFace = false;
+    });
     setState(() {
       _image;
     });
@@ -153,13 +180,38 @@ class _faceVerificationState extends State<faceVerification> {
                 },
                 child: Text("Capture"),
               ),
-              if (face_error.isEmpty) // Render the button only if no face error
+              if (isDetectingFace)
+                Column(
+                  children: [
+                    CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        Color.fromARGB(255, 1, 28, 180),
+                      ),
+                    ),
+                    SizedBox(
+                        height:
+                            8), // Add some spacing between the text and the loading animation
+                    Text(
+                      "Detecting face...",
+                      style: TextStyle(color: Color.fromARGB(255, 1, 28, 180)),
+                    ),
+                  ],
+                ),
+              if (face_error.isNotEmpty && isDetectingFace == false)
+                Text(
+                  'Face not detected',
+                  style: TextStyle(color: Colors.red),
+                ),
+              if (face_error.isEmpty)
+                // Render the button only if no face error
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => faceVerfication2()));
+                            builder: (context) => faceVerfication2(
+                                  voterId: widget.voterId,
+                                )));
                   },
                   child: Text(
                     "Next",

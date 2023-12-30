@@ -44,37 +44,37 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDmbKBJkKu3uuqG4n0BkhufnvXX68u335U',
-    appId: '1:267488540093:web:2c0a55d11396697c384ed4',
-    messagingSenderId: '267488540093',
-    projectId: 'smart-vote-20ab5',
-    authDomain: 'smart-vote-20ab5.firebaseapp.com',
-    storageBucket: 'smart-vote-20ab5.appspot.com',
+    apiKey: 'AIzaSyDKvZZKBW7tcEN0-kzwwYz1oG_-0q5WN2g',
+    appId: '1:161108388125:web:254b7134f4593cb373d9f4',
+    messagingSenderId: '161108388125',
+    projectId: 'smart-vote-65954',
+    authDomain: 'smart-vote-65954.firebaseapp.com',
+    storageBucket: 'smart-vote-65954.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB-8jIyhlEbjrfeuRWYyPUBcanZ_L39YEY',
-    appId: '1:267488540093:android:eb87bb02e4fbe649384ed4',
-    messagingSenderId: '267488540093',
-    projectId: 'smart-vote-20ab5',
-    storageBucket: 'smart-vote-20ab5.appspot.com',
+    apiKey: 'AIzaSyDK3OOvMblW1bRc-4paRTlpBgYRPtOtsN4',
+    appId: '1:161108388125:android:e24dea832a23af8973d9f4',
+    messagingSenderId: '161108388125',
+    projectId: 'smart-vote-65954',
+    storageBucket: 'smart-vote-65954.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDz05Zp8MZUtdvzpLpjBpdMv7dOlRo0M04',
-    appId: '1:267488540093:ios:f4cd177604902df5384ed4',
-    messagingSenderId: '267488540093',
-    projectId: 'smart-vote-20ab5',
-    storageBucket: 'smart-vote-20ab5.appspot.com',
+    apiKey: 'AIzaSyBHbi51gVYZC1qoDWYqVBLfjSAiX7AM-us',
+    appId: '1:161108388125:ios:4c26c57be491361273d9f4',
+    messagingSenderId: '161108388125',
+    projectId: 'smart-vote-65954',
+    storageBucket: 'smart-vote-65954.appspot.com',
     iosBundleId: 'com.example.smartVote',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDz05Zp8MZUtdvzpLpjBpdMv7dOlRo0M04',
-    appId: '1:267488540093:ios:5f4886ea4b41d366384ed4',
-    messagingSenderId: '267488540093',
-    projectId: 'smart-vote-20ab5',
-    storageBucket: 'smart-vote-20ab5.appspot.com',
+    apiKey: 'AIzaSyBHbi51gVYZC1qoDWYqVBLfjSAiX7AM-us',
+    appId: '1:161108388125:ios:44580b1fa3eefc4473d9f4',
+    messagingSenderId: '161108388125',
+    projectId: 'smart-vote-65954',
+    storageBucket: 'smart-vote-65954.appspot.com',
     iosBundleId: 'com.example.smartVote.RunnerTests',
   );
 }

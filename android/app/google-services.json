@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "267488540093",
-    "project_id": "smart-vote-20ab5",
-    "storage_bucket": "smart-vote-20ab5.appspot.com"
+    "project_number": "161108388125",
+    "project_id": "smart-vote-65954",
+    "storage_bucket": "smart-vote-65954.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:267488540093:android:eb87bb02e4fbe649384ed4",
+        "mobilesdk_app_id": "1:161108388125:android:e24dea832a23af8973d9f4",
         "android_client_info": {
           "package_name": "com.example.smart_vote_"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB-8jIyhlEbjrfeuRWYyPUBcanZ_L39YEY"
+          "current_key": "AIzaSyDK3OOvMblW1bRc-4paRTlpBgYRPtOtsN4"
         }
       ],
       "services": {
