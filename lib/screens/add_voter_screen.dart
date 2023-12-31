@@ -138,6 +138,7 @@ class _AddVoterState extends State<AddVoter> {
         address: address,
         number: mobileNumber,
         vId: voterId,
+        qrId: '',
         leftEar_1_X: '',
         leftEar_1_Y: '',
         leftEar_2_X: '',

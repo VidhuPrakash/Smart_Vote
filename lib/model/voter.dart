@@ -3,7 +3,7 @@ class Voter {
   String address;
   String number;
   String vId;
-
+  String qrId;
   String leftEar_1_X;
   String leftEar_1_Y;
 
@@ -45,6 +45,7 @@ class Voter {
     required this.address,
     required this.number,
     required this.vId,
+    required this.qrId,
     required this.leftEar_1_X,
     required this.leftEar_1_Y,
     required this.leftEar_2_X,
@@ -76,6 +77,7 @@ class Voter {
           address: json['address']! as String,
           number: json['number']! as String,
           vId: json['vId'] != null ? json['vId']! as String : '',
+          qrId: json['qrId'] != null ? json['qrId']! as String : '',
           leftEar_1_X: json['leftEar_1_X']! as String,
           leftEar_1_Y: json['leftEar_1_Y']! as String,
           leftEar_2_X: json['leftEar_2_X']! as String,
@@ -106,6 +108,7 @@ class Voter {
     String? address,
     String? number,
     String? vId,
+    String? qrId,
     String? leftEar_1_X,
     String? leftEar_1_Y,
     String? leftEar_2_X,
@@ -136,6 +139,7 @@ class Voter {
         address: address ?? this.address,
         number: number ?? this.number,
         vId: vId ?? this.vId,
+        qrId: qrId ?? this.qrId,
         leftEar_1_X: leftEar_1_X ?? this.leftEar_1_X,
         leftEar_1_Y: leftEar_1_Y ?? this.leftEar_1_Y,
         leftEar_2_X: leftEar_2_X ?? this.leftEar_2_X,
@@ -168,6 +172,7 @@ class Voter {
       'address': address,
       'number': number,
       'v_id': vId,
+      'qr_id': qrId ?? '',
       'leftEar_1_X': leftEar_1_X,
       'leftEar_1_Y': leftEar_1_Y,
       'leftEar_2_X': leftEar_2_X,

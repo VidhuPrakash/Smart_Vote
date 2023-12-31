@@ -22,6 +22,22 @@ class DatabaseService {
     _voterRef.doc(voter.vId).set(voter);
   }
 
+  Future<Voter?> getVoterById(String voterId) async {
+    try {
+      final DocumentSnapshot voterDoc = await _voterRef.doc(voterId).get();
+
+      if (voterDoc.exists) {
+        return voterDoc.data() as Voter;
+      } else {
+        print('Document does not exist for voterId: $voterId');
+        return null;
+      }
+    } catch (e) {
+      print('Error fetching voter data: $e');
+      return null;
+    }
+  }
+
   Future<void> updateVoterField(
       String voterId, String field, String value) async {
     final DocumentReference voterDoc = _voterRef.doc(voterId);

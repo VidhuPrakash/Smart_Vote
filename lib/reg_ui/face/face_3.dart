@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:google_mlkit_commons/google_mlkit_commons.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:smart_vote_/reg_ui/face/face_success.dart';
 import 'package:smart_vote_/service/database_service.dart';
 
 class faceVerfication3 extends StatefulWidget {
@@ -202,7 +203,12 @@ class _faceVerfication3State extends State<faceVerfication3> {
               if (face_error.isEmpty) // Render the button only if no face error
                 ElevatedButton(
                   onPressed: () {
-                    // Handle the "Next" button press
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SuccessFaceReg(
+                                  voterId: widget.voterId,
+                                )));
                   },
                   child: Text(
                     "Next",
