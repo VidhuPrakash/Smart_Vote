@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_vote_/firebase_services/auth_service.dart';
 import 'package:smart_vote_/screens/home_screen.dart';
+import 'package:smart_vote_/voting_ui/qr_vote.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -42,8 +43,8 @@ class _LoginState extends State<Login> {
                 child: Image.asset('assets/logo.png'), // Replace with your logo
               ),
               SizedBox(
-                  height:
-                      20.0), // Add some space between logo and other elements
+                height: 20.0,
+              ), // Add some space between logo and other elements
 
               // Username TextField
               TextField(
@@ -74,7 +75,7 @@ class _LoginState extends State<Login> {
 
                   User? user = await _auth.signInMethod(email, password);
                   if (user != null) {
-                    print("Logged in sucessfully");
+                    print("Logged in successfully");
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) => HomeScreen()));
                   } else {
@@ -97,6 +98,20 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
+
+              // Vote Now Button
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => QRverification()));
+                },
+                child: Text('Vote Now'),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue,
+                ),
+              ),
             ],
           ),
         ),

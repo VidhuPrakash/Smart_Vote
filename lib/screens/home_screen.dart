@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_vote_/screens/add_voter_screen.dart';
+import 'package:smart_vote_/screens/create_poll_screen.dart';
 import 'package:smart_vote_/screens/login_screen.dart';
+import 'package:smart_vote_/voting_ui/qr_vote.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key});
@@ -50,8 +52,8 @@ class HomeScreen extends StatelessWidget {
               minimumSize: Size(double.infinity, 50), // Set button size
             ),
             onPressed: () {
-              // Handle Create Polling button press
-              // Add your logic here
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CreatePollHome()));
             },
             child: Text("Create Polling"),
           ),
@@ -62,8 +64,8 @@ class HomeScreen extends StatelessWidget {
               minimumSize: Size(double.infinity, 50), // Set button size
             ),
             onPressed: () {
-              // Handle Vote button press
-              // Add your logic here
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => QRverification()));
             },
             child: Text("Vote"),
           ),

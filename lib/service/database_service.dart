@@ -38,6 +38,18 @@ class DatabaseService {
     }
   }
 
+  Future<bool> checkQRIDExists(String qrId) async {
+    try {
+      final QuerySnapshot querySnapshot =
+          await _voterRef.where('qrId', isEqualTo: qrId).get();
+
+      return querySnapshot.docs.isNotEmpty;
+    } catch (e) {
+      print('Error checking QRID: $e');
+      return false;
+    }
+  }
+
   Future<void> updateVoterField(
       String voterId, String field, String value) async {
     final DocumentReference voterDoc = _voterRef.doc(voterId);
@@ -52,6 +64,206 @@ class DatabaseService {
     } else {
       // Handle the case where the document doesn't exist
       print('Document does not exist for voterId: $voterId');
+    }
+  }
+
+  Future<bool> leftEar_1_Xverify(String qrId, String Data) async {
+    try {
+      final DocumentSnapshot voterDoc = await _voterRef.doc(qrId).get();
+
+      if (voterDoc.exists) {
+        final Voter retrievedVoter = voterDoc.data() as Voter;
+
+        // Compare specific attributes of the voters
+        if (retrievedVoter.leftEar_1_X == Data &&
+            int.parse(Data) <= int.parse(Data) + 50 &&
+            int.parse(Data) >= int.parse(Data) + 50) {
+          return true; // Voter data matches
+        } else {
+          return false; // Voter data doesn't match
+        }
+      } else {
+        print('Document does not exist for voterId: $qrId');
+        return false;
+      }
+    } catch (e) {
+      print('Error comparing voter data: $e');
+      return false;
+    }
+  }
+
+  Future<bool> leftEar_1_Yverify(String qrId, String Data) async {
+    try {
+      final DocumentSnapshot voterDoc = await _voterRef.doc(qrId).get();
+
+      if (voterDoc.exists) {
+        final Voter retrievedVoter = voterDoc.data() as Voter;
+
+        // Compare specific attributes of the voters
+        if (retrievedVoter.leftEar_1_Y == Data &&
+            int.parse(Data) <= int.parse(Data) + 50 &&
+            int.parse(Data) >= int.parse(Data) + 50) {
+          return true; // Voter data matches
+        } else {
+          return false; // Voter data doesn't match
+        }
+      } else {
+        print('Document does not exist for voterId: $qrId');
+        return false;
+      }
+    } catch (e) {
+      print('Error comparing voter data: $e');
+      return false;
+    }
+  }
+
+  Future<bool> leftEye_1_Xverify(String qrId, String Data) async {
+    try {
+      final DocumentSnapshot voterDoc = await _voterRef.doc(qrId).get();
+
+      if (voterDoc.exists) {
+        final Voter retrievedVoter = voterDoc.data() as Voter;
+
+        // Compare specific attributes of the voters
+        if (retrievedVoter.leftEye_1_X == Data &&
+            int.parse(Data) <= int.parse(Data) + 50 &&
+            int.parse(Data) >= int.parse(Data) + 50) {
+          return true; // Voter data matches
+        } else {
+          return false; // Voter data doesn't match
+        }
+      } else {
+        print('Document does not exist for voterId: $qrId');
+        return false;
+      }
+    } catch (e) {
+      print('Error comparing voter data: $e');
+      return false;
+    }
+  }
+
+  Future<bool> leftEye_1_Yverify(String qrId, String Data) async {
+    try {
+      final DocumentSnapshot voterDoc = await _voterRef.doc(qrId).get();
+
+      if (voterDoc.exists) {
+        final Voter retrievedVoter = voterDoc.data() as Voter;
+
+        // Compare specific attributes of the voters
+        if (retrievedVoter.leftEye_1_Y == Data &&
+            int.parse(Data) <= int.parse(Data) + 50 &&
+            int.parse(Data) >= int.parse(Data) + 50) {
+          return true; // Voter data matches
+        } else {
+          return false; // Voter data doesn't match
+        }
+      } else {
+        print('Document does not exist for voterId: $qrId');
+        return false;
+      }
+    } catch (e) {
+      print('Error comparing voter data: $e');
+      return false;
+    }
+  }
+
+  Future<bool> rightEar_1_Xverify(String qrId, String Data) async {
+    try {
+      final DocumentSnapshot voterDoc = await _voterRef.doc(qrId).get();
+
+      if (voterDoc.exists) {
+        final Voter retrievedVoter = voterDoc.data() as Voter;
+
+        // Compare specific attributes of the voters
+        if (retrievedVoter.rightEar_1_X == Data &&
+            int.parse(Data) <= int.parse(Data) + 50 &&
+            int.parse(Data) >= int.parse(Data) + 50) {
+          return true; // Voter data matches
+        } else {
+          return false; // Voter data doesn't match
+        }
+      } else {
+        print('Document does not exist for voterId: $qrId');
+        return false;
+      }
+    } catch (e) {
+      print('Error comparing voter data: $e');
+      return false;
+    }
+  }
+
+  Future<bool> rightEar_1_Yverify(String qrId, String Data) async {
+    try {
+      final DocumentSnapshot voterDoc = await _voterRef.doc(qrId).get();
+
+      if (voterDoc.exists) {
+        final Voter retrievedVoter = voterDoc.data() as Voter;
+
+        // Compare specific attributes of the voters
+        if (retrievedVoter.rightEar_1_Y == Data &&
+            int.parse(Data) <= int.parse(Data) + 50 &&
+            int.parse(Data) >= int.parse(Data) + 50) {
+          return true; // Voter data matches
+        } else {
+          return false; // Voter data doesn't match
+        }
+      } else {
+        print('Document does not exist for voterId: $qrId');
+        return false;
+      }
+    } catch (e) {
+      print('Error comparing voter data: $e');
+      return false;
+    }
+  }
+
+  Future<bool> rightEye_1_Xverify(String qrId, String Data) async {
+    try {
+      final DocumentSnapshot voterDoc = await _voterRef.doc(qrId).get();
+
+      if (voterDoc.exists) {
+        final Voter retrievedVoter = voterDoc.data() as Voter;
+
+        // Compare specific attributes of the voters
+        if (retrievedVoter.rightEye_1_X == Data &&
+            int.parse(Data) <= int.parse(Data) + 50 &&
+            int.parse(Data) >= int.parse(Data) + 50) {
+          return true; // Voter data matches
+        } else {
+          return false; // Voter data doesn't match
+        }
+      } else {
+        print('Document does not exist for voterId: $qrId');
+        return false;
+      }
+    } catch (e) {
+      print('Error comparing voter data: $e');
+      return false;
+    }
+  }
+
+  Future<bool> rightEye_1_Yverify(String qrId, String Data) async {
+    try {
+      final DocumentSnapshot voterDoc = await _voterRef.doc(qrId).get();
+
+      if (voterDoc.exists) {
+        final Voter retrievedVoter = voterDoc.data() as Voter;
+
+        // Compare specific attributes of the voters
+        if (retrievedVoter.rightEye_1_Y == Data &&
+            int.parse(Data) <= int.parse(Data) + 50 &&
+            int.parse(Data) >= int.parse(Data) + 50) {
+          return true; // Voter data matches
+        } else {
+          return false; // Voter data doesn't match
+        }
+      } else {
+        print('Document does not exist for voterId: $qrId');
+        return false;
+      }
+    } catch (e) {
+      print('Error comparing voter data: $e');
+      return false;
     }
   }
 }
