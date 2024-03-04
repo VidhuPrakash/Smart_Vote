@@ -30,6 +30,17 @@ class _faceVoteVerifyState extends State<faceVoteVerify> {
   String instr1 = "*Keep the phone straight to face";
   String instr2 = "*Keep maximum distance";
   dynamic faceDetector;
+  bool leftEye_X = false;
+  bool leftEye_Y= false;
+  bool rightEye_X= false;
+  bool rightEye_Y= false;
+  bool leftEar_X= false;
+  bool leftEar_Y= false;
+  bool rightEar_X= false;
+  bool rightEar_Y= false;
+
+
+  String name = "";
 
   @override
   void initState() {
@@ -52,10 +63,15 @@ class _faceVoteVerifyState extends State<faceVoteVerify> {
       });
     }
   }
+  _getVoter(qrId) async{
+   name = (await DatabaseService().getVoterById(qrId)) as String;
+   print("#####name:"+name);
+  }
 
   doFaceVerify() async {
     setState(() {
       isDetectingFace = true;
+       face_error = face_error;
     });
     result = "";
 
@@ -92,33 +108,33 @@ class _faceVoteVerifyState extends State<faceVoteVerify> {
         if (leftEar != null) {
           final Point<int> leftEarPos = leftEar.position;
           print("Left Ear Points:" + leftEarPos.toString());
-          await DatabaseService()
+           leftEar_X = await DatabaseService()
               .leftEar_1_Xverify(widget.qrId, leftEarPos.x.toString());
-          await DatabaseService()
+           leftEar_Y = await DatabaseService()
               .leftEar_1_Yverify(widget.qrId, leftEarPos.y.toString());
         }
         if (rightEar != null) {
           final Point<int> rightEarPos = rightEar.position;
           print("Right Ear Points:" + rightEarPos.toString());
-          await DatabaseService()
+           rightEar_X = await DatabaseService()
               .rightEar_1_Xverify(widget.qrId, rightEarPos.x.toString());
-          await DatabaseService()
+          rightEar_Y = await DatabaseService()
               .rightEar_1_Yverify(widget.qrId, rightEarPos.y.toString());
         }
         if (leftEye != null) {
           final Point<int> leftEyePos = leftEye.position;
           print("Left Eye Points:" + leftEyePos.toString());
-          await DatabaseService()
+          leftEye_X = await DatabaseService()
               .leftEye_1_Xverify(widget.qrId, leftEyePos.x.toString());
-          await DatabaseService()
+          leftEye_Y = await DatabaseService()
               .leftEye_1_Yverify(widget.qrId, leftEyePos.y.toString());
         }
         if (rightEye != null) {
           final Point<int> rightEyePos = rightEye.position;
           print("Right Eye Points:" + rightEyePos.toString());
-          await DatabaseService()
+          rightEye_X = await DatabaseService()
               .rightEye_1_Xverify(widget.qrId, rightEyePos.x.toString());
-          await DatabaseService()
+          rightEye_Y = await DatabaseService()
               .rightEye_1_Yverify(widget.qrId, rightEyePos.y.toString());
         }
         if (face.trackingId != null) {
@@ -126,6 +142,11 @@ class _faceVoteVerifyState extends State<faceVoteVerify> {
 
           print("face id ::: ${id}");
         }
+        if (!leftEye_X || !leftEye_Y || !rightEye_X || !rightEye_Y || !leftEar_X || !leftEar_Y || !rightEar_X || !rightEar_Y) {
+    face_error = "Face not detected";
+} else {
+    face_error = ""; // Clear the error message if all landmarks are detected
+}
       }
     }
     setState(() {
@@ -144,10 +165,10 @@ class _faceVoteVerifyState extends State<faceVoteVerify> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
-                child: Text("Face Registration",
+                child: Text("WELCOME $name",
                     style: TextStyle(fontSize: 36, color: Colors.blueAccent))),
             Center(
-                child: Text("1/3",
+                child: Text("PLEASE VERIFY FACE",
                     style: TextStyle(fontSize: 20, color: Colors.blueAccent))),
           ],
         ),
@@ -203,7 +224,7 @@ class _faceVoteVerifyState extends State<faceVoteVerify> {
                   'Face not detected',
                   style: TextStyle(color: Colors.red),
                 ),
-              if (face_error.isEmpty)
+              if (face_error.isEmpty )
                 // Render the button only if no face error
                 ElevatedButton(
                   onPressed: () {

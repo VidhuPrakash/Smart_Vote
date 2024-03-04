@@ -43,7 +43,7 @@ class DatabaseService {
       final QuerySnapshot querySnapshot =
           await _voterRef.where('qrId', isEqualTo: qrId).get();
 
-      return querySnapshot.docs.isNotEmpty;
+      return true;
     } catch (e) {
       print('Error checking QRID: $e');
       return false;
@@ -76,8 +76,11 @@ class DatabaseService {
 
         // Compare specific attributes of the voters
         if (retrievedVoter.leftEar_1_X == Data &&
-            int.parse(Data) <= int.parse(Data) + 50 &&
-            int.parse(Data) >= int.parse(Data) + 50) {
+           int.parse( retrievedVoter.leftEar_1_X) <= int.parse(Data) + 250 
+           || retrievedVoter.leftEar_2_X == Data &&
+            int.parse(retrievedVoter.leftEar_2_X) <= int.parse(Data) + 250 
+            ||retrievedVoter.leftEar_3_X == Data &&
+            int.parse(retrievedVoter.leftEar_3_X) <= int.parse(Data) + 250 ) {
           return true; // Voter data matches
         } else {
           return false; // Voter data doesn't match
@@ -101,8 +104,12 @@ class DatabaseService {
 
         // Compare specific attributes of the voters
         if (retrievedVoter.leftEar_1_Y == Data &&
-            int.parse(Data) <= int.parse(Data) + 50 &&
-            int.parse(Data) >= int.parse(Data) + 50) {
+            int.parse(retrievedVoter.leftEar_1_Y) <= int.parse(Data) + 250 
+            || retrievedVoter.leftEar_2_Y == Data &&
+            int.parse(retrievedVoter.leftEar_1_Y) <= int.parse(Data) + 250  ||
+            retrievedVoter.leftEar_3_Y == Data &&
+            int.parse(retrievedVoter.leftEar_1_Y) <= int.parse(Data) + 250 
+            ) {
           return true; // Voter data matches
         } else {
           return false; // Voter data doesn't match
@@ -126,8 +133,12 @@ class DatabaseService {
 
         // Compare specific attributes of the voters
         if (retrievedVoter.leftEye_1_X == Data &&
-            int.parse(Data) <= int.parse(Data) + 50 &&
-            int.parse(Data) >= int.parse(Data) + 50) {
+            int.parse(retrievedVoter.leftEar_1_Y) <= int.parse(Data) + 250 
+            || retrievedVoter.leftEye_2_X == Data &&
+            int.parse(retrievedVoter.leftEar_1_Y) <= int.parse(Data) + 250  ||
+            retrievedVoter.leftEye_3_X == Data &&
+            int.parse(retrievedVoter.leftEar_1_Y) <= int.parse(Data) + 250 
+            ) {
           return true; // Voter data matches
         } else {
           return false; // Voter data doesn't match
@@ -151,8 +162,12 @@ class DatabaseService {
 
         // Compare specific attributes of the voters
         if (retrievedVoter.leftEye_1_Y == Data &&
-            int.parse(Data) <= int.parse(Data) + 50 &&
-            int.parse(Data) >= int.parse(Data) + 50) {
+            int.parse(retrievedVoter.leftEar_1_Y) <= int.parse(Data) + 250 
+            || retrievedVoter.leftEye_2_Y == Data &&
+            int.parse(retrievedVoter.leftEar_1_Y) <= int.parse(Data) + 250  ||
+            retrievedVoter.leftEye_3_Y == Data &&
+            int.parse(retrievedVoter.leftEar_1_Y) <= int.parse(Data) + 250 
+            ) {
           return true; // Voter data matches
         } else {
           return false; // Voter data doesn't match
@@ -176,8 +191,12 @@ class DatabaseService {
 
         // Compare specific attributes of the voters
         if (retrievedVoter.rightEar_1_X == Data &&
-            int.parse(Data) <= int.parse(Data) + 50 &&
-            int.parse(Data) >= int.parse(Data) + 50) {
+            int.parse(retrievedVoter.rightEar_1_X) <= int.parse(Data) + 250 
+            || retrievedVoter.rightEar_2_X == Data &&
+            int.parse(retrievedVoter.rightEar_2_X) <= int.parse(Data) + 250  ||
+            retrievedVoter.rightEar_3_X == Data &&
+            int.parse(retrievedVoter.rightEar_3_X) <= int.parse(Data) + 250 
+            ) {
           return true; // Voter data matches
         } else {
           return false; // Voter data doesn't match
@@ -201,8 +220,12 @@ class DatabaseService {
 
         // Compare specific attributes of the voters
         if (retrievedVoter.rightEar_1_Y == Data &&
-            int.parse(Data) <= int.parse(Data) + 50 &&
-            int.parse(Data) >= int.parse(Data) + 50) {
+            int.parse(retrievedVoter.rightEar_1_Y) <= int.parse(Data) + 250 
+            || retrievedVoter.rightEar_2_Y == Data &&
+            int.parse(retrievedVoter.rightEar_2_Y) <= int.parse(Data) + 250  ||
+            retrievedVoter.rightEar_3_Y == Data &&
+            int.parse(retrievedVoter.rightEar_3_Y) <= int.parse(Data) + 250 
+           ) {
           return true; // Voter data matches
         } else {
           return false; // Voter data doesn't match
@@ -226,8 +249,12 @@ class DatabaseService {
 
         // Compare specific attributes of the voters
         if (retrievedVoter.rightEye_1_X == Data &&
-            int.parse(Data) <= int.parse(Data) + 50 &&
-            int.parse(Data) >= int.parse(Data) + 50) {
+            int.parse(retrievedVoter.rightEye_1_X) <= int.parse(Data) + 250 
+            || retrievedVoter.rightEye_2_X == Data &&
+            int.parse(retrievedVoter.rightEye_2_X) <= int.parse(Data) + 250  ||
+            retrievedVoter.rightEye_3_X == Data &&
+            int.parse(retrievedVoter.rightEye_3_X) <= int.parse(Data) + 250 
+           ) {
           return true; // Voter data matches
         } else {
           return false; // Voter data doesn't match
@@ -251,8 +278,12 @@ class DatabaseService {
 
         // Compare specific attributes of the voters
         if (retrievedVoter.rightEye_1_Y == Data &&
-            int.parse(Data) <= int.parse(Data) + 50 &&
-            int.parse(Data) >= int.parse(Data) + 50) {
+            int.parse(retrievedVoter.rightEye_1_Y) <= int.parse(Data) + 250 
+            || retrievedVoter.rightEye_2_Y == Data &&
+            int.parse(retrievedVoter.rightEye_2_Y) <= int.parse(Data) + 250  ||
+            retrievedVoter.rightEye_3_Y == Data &&
+            int.parse(retrievedVoter.rightEye_3_Y) <= int.parse(Data) + 250 
+           ) {
           return true; // Voter data matches
         } else {
           return false; // Voter data doesn't match

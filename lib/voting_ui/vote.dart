@@ -10,7 +10,7 @@ class VotingPage extends StatefulWidget {
 }
 
 class _VotingPageState extends State<VotingPage> {
-  late String selectedCandidate;
+  String selectedCandidate='';
 
   void _selectCandidate(String candidateName) {
     setState(() {
